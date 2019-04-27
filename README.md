@@ -1,6 +1,6 @@
 # Anchore Troubleshooting Guide
 
-This guide will walkthrough some general troubleshooting tips with your Anchore Engine instance. Anchore Engine is built and delivered as a [Docker container](https://hub.docker.com/r/anchore/anchore-engine). The Anchore Engine is a collection of services that can be deployed co-located or fulkly distributed or anythin in-between, as such it can scale out to increase analysis throughput. The only external system required is PostgreSQL (9.6+) that all services connect to, but do not use for communication beyond some very simple service registration / lookup processes. 
+This guide will walkthrough some general troubleshooting tips with your Anchore Engine instance.
 
 ## Anchore CLI
 
@@ -27,3 +27,20 @@ ANCHORE_CLI_PASS=foobar
 If you run into an `"Unauthorized"` error, verify you have configured the Anchore CLI correctly, as this error is most commonly seen when the Username, Password, or Service URL are improperly set. 
 
 **Note:** When passing the parameters through the command line, order matters. For example, `anchore-cli --url http://localhost:8228/v1 --u admin --p foobar system status`
+
+## Anchore Engine
+
+ Anchore Engine is built and delivered as a [Docker container](https://hub.docker.com/r/anchore/anchore-engine). The Anchore Engine is a collection of services that can be deployed co-located or fulkly distributed or anythin in-between, as such it can scale out to increase analysis throughput. The only external system required is PostgreSQL (9.6+) that all services connect to, but do not use for communication beyond some very simple service registration / lookup processes. 
+
+Throughout this guide, I will be executing Anchore CLI commands to assist with troubleshooting. For more information on the Anchore CLI, please reference the CLI section above. 
+
+### General Troubleshooting Approach
+
+Verify that the following Anchore Engine services are up
+
+- Service analyzer
+- Service policy_engine
+- Service catalog
+- Service apiext
+- Service simplequeue
+
