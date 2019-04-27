@@ -23,3 +23,7 @@ ANCHORE_CLI_URL=http://myserver.example.com:8228/v1
 ANCHORE_CLI_USER=admin
 ANCHORE_CLI_PASS=foobar
 ```
+
+If you run into an `"Unauthorized"` error, verify you have configured the Anchore CLI appropriately, as this error is most commonly seen when the Username, Password, or Service URL are improperly set. 
+
+**Note:** When passing the parameters through the command line, order matters. For example, `anchore-cli --url http://localhost:8228/v1 --u admin --p foobar system status`
