@@ -57,3 +57,12 @@ Service simplequeue (dockerhostid-anchore-engine, http://anchore-engine:8083): u
 Engine DB Version: 0.0.9
 Engine Code Version: 0.3.4
 ```
+
+**Note:** If specific services are down, you can investigate the logs for the services. The logs can be accessed by executing into the corresponding container and navigating to `/var/log/anchore`. From this location you can access logs for specific services (if co-located each of the service logs will be available for access under this directory).
+
+```
+# Co-located Anchore Engine installation 
+
+root@4c0a95557659:/var/log/anchore# ls
+anchore-api.log                 anchore-simplequeue.log     anchore-catalog.log             anchore-policy-engine.log  anchore-worker.log
+```
