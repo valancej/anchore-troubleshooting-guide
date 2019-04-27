@@ -66,3 +66,14 @@ Engine Code Version: 0.3.4
 root@4c0a95557659:/var/log/anchore# ls
 anchore-api.log                 anchore-simplequeue.log     anchore-catalog.log             anchore-policy-engine.log  anchore-worker.log
 ```
+
+### Events
+
+If you've successfully verified that all of the Anchore Engine sevices are up, but are still running into issues operating Anchore a good place check is the event log. 
+
+The event log subsystem provides users with a mechanism to inspect asynchronous event occuring across various Anchore Engine services. Anchore events include periodically triggered activities such as vulnerability data feed sync in the policy_engine service, image analysis failures originating from the analyzer service, and other informational or system fault events. The catalog service may also generate events for any repositories or image tags that are being watched, when Anchore Engine encounters connectivity, authentication, authorization or other errors in the process of checking for updates. 
+
+The event log is aimed at troubleshooting most common failure scenarios (especially those that happen during asynchronous engine operations) and to pinpoint the reasons for failures, that can be used subsequently to help with corrective actions. Events can be cleared from Anchore Engine in bulk or individually. 
+
+#### Viewing Events
+
