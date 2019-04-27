@@ -44,3 +44,16 @@ Verify that the following Anchore Engine services are up
 - Service apiext
 - Service simplequeue
 
+You can do so by running: `anchore-cli system status`
+
+```
+anchore-cli system status
+Service analyzer (dockerhostid-anchore-engine, http://anchore-engine:8084): up
+Service policy_engine (dockerhostid-anchore-engine, http://anchore-engine:8087): up
+Service catalog (dockerhostid-anchore-engine, http://anchore-engine:8082): up
+Service apiext (dockerhostid-anchore-engine, http://anchore-engine:8228): up
+Service simplequeue (dockerhostid-anchore-engine, http://anchore-engine:8083): up
+
+Engine DB Version: 0.0.9
+Engine Code Version: 0.3.4
+```
