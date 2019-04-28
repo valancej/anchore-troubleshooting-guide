@@ -153,7 +153,7 @@ Anchore Engine attempts to perform a credential validation upon registry additio
 
 ## Anchore Engine container keeps exiting
 
-The first step here should be to inspected the logs for the exited container. For Docker, running `docker logs <exited container id> ` should return the reason the container exited. 
+The first step here should be to inspect the logs for the exited container. For Docker, running `docker logs <exited container id> ` should return the reason the container exited. 
 
 If you see `[MainThread] [anchore_manager.cli.service/start()] [ERROR] Error: cannot locate configuration file (/config/config.yaml)` in the logs, you should verify you have set up the directory for your Anchore installation correctly. 
 
