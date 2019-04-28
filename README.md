@@ -10,6 +10,8 @@ Table of contents
       * [Troubleshooting the CLI](#troubleshooting-the-cli)
    * [Anchore Engine](#anchore-engine)
       * [General Troubleshooting Approach](#general-troubleshooting-approach)
+      * [Events](#events)
+      * [Feeds](#feeds)
 <!--te-->
 
 ## Anchore CLI
