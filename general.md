@@ -150,3 +150,5 @@ Anchore logs can be accessed by executing into the Anchore container and navigat
 root@4c0a95557659:/var/log/anchore# ls
 anchore-api.log                 anchore-simplequeue.log     anchore-catalog.log             anchore-policy-engine.log  anchore-worker.log
 ```
+
+As stated above, if you are running into issues performing certain Anchore operations (examples: images are failing analysis or cannot access a private registry) please consult the [FAQs](faqs.md) document.
