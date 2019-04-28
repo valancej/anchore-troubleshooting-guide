@@ -10,6 +10,7 @@ Table of contents
       * [Troubleshooting the CLI](#troubleshooting-the-cli)
    * [Anchore Engine](#anchore-engine)
       * [General Troubleshooting Approach](#general-troubleshooting-approach)
+      * [Logs](#logs)
       * [Events](#events)
       * [Feeds](#feeds)
 <!--te-->
@@ -268,6 +269,8 @@ Service availability: Success.
 Feed sync: Checking sync completion for feed set (vulnerabilities)...
 Feed sync: Success.
 ```
+
+### Logs
 
 ### Image analysis 
 
