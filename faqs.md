@@ -1,12 +1,16 @@
 # Anchore Troubleshooting FAQs
 
-For each of the following frequently asked questions, Read the [General Troubleshooting Approach Guide](general.md) first, then following the data from there, following the query specific responses below. 
+For each of the following frequently asked questions, read the [General Troubleshooting Approach Guide](general.md) first, then following the data from there, follow the query specific answers below. 
 
-## Anchore CLI
 
-The Anchore CLI provides a command line interface on top of the Anchore Engine installation. Anchore CLI is published as a Python package that can be installed from source from the Python PyPi package repository on any platform supporting PyPi. For more information on installing the CLI, check out the [GitHub Repository](https://github.com/anchore/anchore-cli). There is also a Anchore Engine CLI container image available on [Docker Hub](https://hub.docker.com/r/anchore/engine-cli/). Finally, the Anchore CLI comes packaged inside the Anchore Engine container, and can be accessed by executing into the running Anchore Engine container. 
+<!--ts-->
+   * [Unauthorized error when using the Anchore CLI](#unauthorized-error-when-using-the-anchore-cli)
+   * [No vulnerability results for an analyzed image](#no-vulnerability-results-for-an-analyzed-image)
+<!--te-->
 
-### Troubleshooting the CLI
+## Unauthorized error when using the Anchore CLI
+
+If you run into an `"Unauthorized"` error, verify you have configured the Anchore CLI correctly, as this error is most commonly seen when the Username, Password, or Service URL are improperly set. 
 
 By default the Anchore CLI will try to connect to the Anchore Engine at `http://localhost:8228/v1` with no authentication. The username, password and URL for the server can be passed to the Anchore CLI as command line arguments. 
 
@@ -24,17 +28,13 @@ ANCHORE_CLI_USER=admin
 ANCHORE_CLI_PASS=foobar
 ```
 
-If you run into an `"Unauthorized"` error, verify you have configured the Anchore CLI correctly, as this error is most commonly seen when the Username, Password, or Service URL are improperly set. 
-
 **Note:** When passing the parameters through the command line, order matters. For example, `anchore-cli --url http://localhost:8228/v1 --u admin --p foobar system status`
 
-### Feeds
+## No vulnerability results for an analyzed image
 
-When the Anchore Engine runs it will begin to synchronize security feed data from the Anchore feed service.
+In order to return vulnerability results on analyzed images feed data must be synced. 
 
-**Note:** Upon a fresh installation of Anchore Engine, the system will take some time to bootstrap. CVE data for Linux distributions such as Alpine, CentOS, Debian, Oracle, Red Hat and Ubuntu will be downloaded. The initial sync may take anywhere from  10 to 60 minutes depending on the speed of your network connection. 
-
-#### Viewing feeds
+### Verifying feed data
 
 The following command will report a list of feeds synced by Anchore: `anchore-cli system feeds list`
 
@@ -94,9 +94,9 @@ vulnerabilities        ubuntu:18.10           2019-04-28T13:04:15.418772        
 vulnerabilities        ubuntu:19.04           2019-04-28T13:04:08.653333        6274 
 ```
 
-**Note:** In order to return vulnerability results on analyzed images feed data must be synced.
+### Waiting for Anchore feed data to sync
 
-#### System wait
+**Note:** Upon a fresh installation of Anchore Engine, the system will take some time to bootstrap. CVE data for Linux distributions such as Alpine, CentOS, Debian, Oracle, Red Hat and Ubuntu will be downloaded. The initial sync may take anywhere from  10 to 60 minutes depending on the speed of your network connection. 
 
 You can run the following command to wait until Anchore Engine is available and ready. This can be useful when waiting for vulnerability data to sync on intial installation. `anchore-cli system wait`
 
@@ -113,7 +113,7 @@ Feed sync: Checking sync completion for feed set (vulnerabilities)...
 Feed sync: Success.
 ```
 
-#### Feed sync failures
+### Feed sync failures
 
 If you are running into feed sync failures a good place to begin investigation is the the policy engine service logs (`/var/log/anchore/anchore-policy-engine.log`)
 
