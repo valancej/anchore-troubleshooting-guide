@@ -284,7 +284,7 @@ If you are running into feed sync failures a good place to begin investigation i
 
 Image analysis is performed as a distinct, asynchronous, and scheduled task driven by queues that analyzer workers periodically poll. Image records have a small state-machine as follows:
 
-#### Image analysis failure
+#### Image analysis failures
 
 If you run into issues with images failing analysis a good place to start inspecting is the analyzer logs (`/var/log/anchore/anchore-worker.log`)
 
