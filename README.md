@@ -276,6 +276,10 @@ Feed sync: Checking sync completion for feed set (vulnerabilities)...
 Feed sync: Success.
 ```
 
+#### Feed sync failures
+
+If you are running into feed sync failures a good place to begin investigation is the the policy engine service lgos (`/var/log/anchore/anchore-policy-engine.log`)
+
 ### Image analysis
 
 Image analysis is performed as a distinct, asynchronous, and scheduled task driven by queues that analyzer workers periodically poll. Image records have a small state-machine as follows:
