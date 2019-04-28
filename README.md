@@ -10,8 +10,8 @@ Table of contents
       * [Troubleshooting the CLI](#troubleshooting-the-cli)
    * [Anchore Engine](#anchore-engine)
       * [General Troubleshooting Approach](#general-troubleshooting-approach)
-      * [Logs](#logs)
       * [Events](#events)
+      * [Logs](#logs)
       * [Feeds](#feeds)
 <!--te-->
 
@@ -177,6 +177,18 @@ type: feed_sync_start
 
 **Note:** Depending on the output from the detailed events, looking into the logs for a particular servicename (example: policy_engine) is the next troubleshooting step.  
 
+### Logs
+
+Anchore logs can be accessed by executing into the Anchore container and navigating to `/var/log/anchore`. From this location you can access logs for specific services (if co-located each of the service logs will be available for access under this directory).
+
+```
+# Example logs
+# Co-located Anchore Engine installation 
+
+root@4c0a95557659:/var/log/anchore# ls
+anchore-api.log                 anchore-simplequeue.log     anchore-catalog.log             anchore-policy-engine.log  anchore-worker.log
+```
+
 ### Feeds
 
 When the Anchore Engine runs it will begin to synchronize security feed data from the Anchore feed service.
@@ -262,17 +274,7 @@ Feed sync: Checking sync completion for feed set (vulnerabilities)...
 Feed sync: Success.
 ```
 
-### Logs
 
-Anchore logs can be accessed by executing into the Anchore container and navigating to `/var/log/anchore`. From this location you can access logs for specific services (if co-located each of the service logs will be available for access under this directory).
-
-```
-# Example logs
-# Co-located Anchore Engine installation 
-
-root@4c0a95557659:/var/log/anchore# ls
-anchore-api.log                 anchore-simplequeue.log     anchore-catalog.log             anchore-policy-engine.log  anchore-worker.log
-```
 
 ### Image analysis 
 
