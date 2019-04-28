@@ -36,6 +36,8 @@ Throughout this guide, I will be executing Anchore CLI commands to assist with t
 
 ### General Troubleshooting Approach
 
+#### Verifying Services
+
 Verify that the following Anchore Engine services are up
 
 - Service analyzer
@@ -78,3 +80,41 @@ The event log is aimed at troubleshooting most common failure scenarios (especia
 
 #### Viewing Events
 
+Running the following command will give a list of recent Anchore events: `anchore-cli event list`
+
+```
+# Viewing list of recent Anchore events
+
+root@4c0a95557659:/anchore-engine# anchore-cli event list
+Timestamp                          Level        Service              Host                                                           Event                                  ID                                      
+2019-04-28T13:04:16.203425Z        INFO         policy_engine        dockerhostid-anchore-engine                                    feed_sync_complete                     16590324ffe443dfa8b8352a0e63bd14        
+2019-04-28T13:04:04.202101Z        INFO         policy_engine        dockerhostid-anchore-engine                                    feed_sync_start                        7d0c3d0015e74302a5242f74b03092ec        
+2019-04-28T07:04:03.946414Z        INFO         policy_engine        dockerhostid-anchore-engine                                    feed_sync_complete                     eb8a7f70c0eb4f92a8941ead61d3a5ef        
+2019-04-28T07:03:53.112932Z        INFO         policy_engine        dockerhostid-anchore-engine                                    feed_sync_start                        1277941
+```
+
+#### Details about a specific event
+
+If you would like more information about a specific event, you can run the following command: `anchore-cli event get <event-id>`
+
+```
+# Details about a specific Anchore event
+
+root@4c0a95557659:/anchore-engine# anchore-cli event get 7f6dc74c8c8348ecad97f2f54ad488d6
+details:
+  sync_feed_types:
+  - vulnerabilities
+level: INFO
+message: Feed sync started
+resource:
+  type: feeds
+  user_id: admin
+source:
+  base_url: http://localhost:8087
+  hostid: anchore-quickstart
+  servicename: policy_engine
+timestamp: '2019-02-06T04:15:11.372306Z'
+type: feed_sync_start
+```
+
+**Note:** Depending on the output from the detailed events, looking into the logs for a particular servicename (example: policy_engine) is the next troubleshooting step.  
