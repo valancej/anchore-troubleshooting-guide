@@ -10,6 +10,8 @@ For each of the following frequently asked questions, read the [General Troubles
    * [Unable to access private registry](#unable-to-access-private-registry)
 <!--te-->
 
+**Note:** As stated in the [General Troubleshooting Approach Guide](general.md), passing the `--debug` option to any Anchore CLI command can often help narrow down particular issues. 
+
 ## Unauthorized error when using the Anchore CLI
 
 If you run into an `"Unauthorized"` error, verify you have configured the Anchore CLI correctly, as this error is most commonly seen when the Username, Password, or Service URL are improperly set. 
