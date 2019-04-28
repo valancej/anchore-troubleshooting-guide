@@ -70,6 +70,143 @@ root@4c0a95557659:/var/log/anchore# ls
 anchore-api.log                 anchore-simplequeue.log     anchore-catalog.log             anchore-policy-engine.log  anchore-worker.log
 ```
 
+#### The --debug and --json options
+
+Passing the `--debug` option to any Anchore CLI can often help narrow down particular issues. 
+
+```
+# Example system status with --debug
+root@4c0a95557659:/anchore-engine# anchore-cli --debug system status
+INFO:anchorecli.clients.apiexternal:As Account = None
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:8228
+DEBUG:urllib3.connectionpool:http://localhost:8228 "GET / HTTP/1.1" 200 5
+INFO:anchorecli.clients.apiexternal:As Account = None
+DEBUG:anchorecli.clients.apiexternal:GET url=http://localhost:8228/system
+DEBUG:anchorecli.clients.apiexternal:GET insecure=True
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:8228
+DEBUG:urllib3.connectionpool:http://localhost:8228 "GET /system HTTP/1.1" 200 2672
+DEBUG:anchorecli.cli.utils:fetched httpcode from response: 200
+Service analyzer (dockerhostid-anchore-engine, http://anchore-engine:8084): up
+Service policy_engine (dockerhostid-anchore-engine, http://anchore-engine:8087): up
+Service catalog (dockerhostid-anchore-engine, http://anchore-engine:8082): up
+Service apiext (dockerhostid-anchore-engine, http://anchore-engine:8228): up
+Service simplequeue (dockerhostid-anchore-engine, http://anchore-engine:8083): up
+```
+
+Passing the `--json` option to any Anchore CLI commands will output the data in JSON format.
+
+```
+# Example system status with --json
+root@4c0a95557659:/anchore-engine# anchore-cli --json system status
+{
+    "service_states": [
+        {
+            "base_url": "http://anchore-engine:8087",
+            "hostid": "dockerhostid-anchore-engine",
+            "service_detail": {
+                "available": true,
+                "busy": false,
+                "db_version": "0.0.9",
+                "detail": {},
+                "message": "all good",
+                "up": true,
+                "version": "0.3.4"
+            },
+            "servicename": "policy_engine",
+            "status": true,
+            "status_message": "available",
+            "version": "v1"
+        },
+        {
+            "base_url": "http://anchore-engine:8338",
+            "hostid": "dockerhostid-anchore-engine",
+            "service_detail": {
+                "available": true,
+                "busy": false,
+                "db_version": "0.0.9",
+                "detail": {},
+                "message": "all good",
+                "up": true,
+                "version": "0.3.4"
+            },
+            "servicename": "kubernetes_webhook",
+            "status": true,
+            "status_message": "available",
+            "version": "v1"
+        },
+        {
+            "base_url": "http://anchore-engine:8084",
+            "hostid": "dockerhostid-anchore-engine",
+            "service_detail": {
+                "available": true,
+                "busy": false,
+                "db_version": "0.0.9",
+                "detail": {},
+                "message": "all good",
+                "up": true,
+                "version": "0.3.4"
+            },
+            "servicename": "analyzer",
+            "status": true,
+            "status_message": "available",
+            "version": "v1"
+        },
+        {
+            "base_url": "http://anchore-engine:8082",
+            "hostid": "dockerhostid-anchore-engine",
+            "service_detail": {
+                "available": true,
+                "busy": false,
+                "db_version": "0.0.9",
+                "detail": {},
+                "message": "all good",
+                "up": true,
+                "version": "0.3.4"
+            },
+            "servicename": "catalog",
+            "status": true,
+            "status_message": "available",
+            "version": "v1"
+        },
+        {
+            "base_url": "http://anchore-engine:8228",
+            "hostid": "dockerhostid-anchore-engine",
+            "service_detail": {
+                "available": true,
+                "busy": false,
+                "db_version": "0.0.9",
+                "detail": {},
+                "message": "all good",
+                "up": true,
+                "version": "0.3.4"
+            },
+            "servicename": "apiext",
+            "status": true,
+            "status_message": "available",
+            "version": "v1"
+        },
+        {
+            "base_url": "http://anchore-engine:8083",
+            "hostid": "dockerhostid-anchore-engine",
+            "service_detail": {
+                "available": true,
+                "busy": false,
+                "db_version": "0.0.9",
+                "detail": {},
+                "message": "all good",
+                "up": true,
+                "version": "0.3.4"
+            },
+            "servicename": "simplequeue",
+            "status": true,
+            "status_message": "available",
+            "version": "v1"
+        }
+    ]
+}
+
+```
+
 ### Events
 
 If you've successfully verified that all of the Anchore Engine sevices are up, but are still running into issues operating Anchore a good place check is the event log. 
