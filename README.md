@@ -284,7 +284,7 @@ If you are running into feed sync failures a good place to begin investigation i
 
 Image analysis is performed as a distinct, asynchronous, and scheduled task driven by queues that analyzer workers periodically poll. Image records have a small state-machine as follows:
 
-**Note:** In order for an image to move from not_analyzed to analyzing, you need a healthy catalog, simplequeue, and analyzer service up and running. See the [Verifying Services](#verifying-services) section for more information.
+**Note:** In order for an image to move from 'not_analyzed' to 'analyzing', you need a healthy catalog, simplequeue, and analyzer service up and running. See the [Verifying Services](#verifying-services) section for more information.
 
 #### Image analysis failures
 
@@ -292,4 +292,19 @@ If you run into issues with images failing analysis a good place to start inspec
 
 The analyzer is the only component that can set an image state to 'analysis_failed', so you should be able to see a record of what happened. 
 
-### Registry 
+### Registry
+
+Anchore Engine will attempt to download images from any registry without requiring further configuration.
+However if your registry requires authentication then the registry and corresponding credentials will need to be defined.
+
+#### The --insecure option
+
+Anchore Engine will only pull images from a TLS/SSL enabled registry. If the registry is protected with a self signed certificate or a certificated signed by an unknown certificate authority then the `--insecure` option can be passed which instructs the Anchore Engine not to validate the certificate.
+
+`anchore-cli registry add REGISTRY USERNAME PASSWORD --insecure`
+
+#### The --skip-validate option
+
+Anchore Engine attempts to perform a credential validation upon registry addition, but there are cases where a credential can be valid but the validation routine can fail (in particular, credential validation methods are changing for public registries over time).  If you are unable to add a registry but believe that the credential you are providing is valid, or you wish to add a credential to anchore before it is in place in the registry, you can bypass the registry credential validation process using the `--skip-validate` option to the 'registry add' command.
+
+`anchore-cli registry add REGISTRY USERNAME PASSWORD --skip-validate`
