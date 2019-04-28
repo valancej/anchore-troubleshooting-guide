@@ -117,91 +117,7 @@ root@4c0a95557659:/anchore-engine# anchore-cli --json system status
             "status_message": "available",
             "version": "v1"
         },
-        {
-            "base_url": "http://anchore-engine:8338",
-            "hostid": "dockerhostid-anchore-engine",
-            "service_detail": {
-                "available": true,
-                "busy": false,
-                "db_version": "0.0.9",
-                "detail": {},
-                "message": "all good",
-                "up": true,
-                "version": "0.3.4"
-            },
-            "servicename": "kubernetes_webhook",
-            "status": true,
-            "status_message": "available",
-            "version": "v1"
-        },
-        {
-            "base_url": "http://anchore-engine:8084",
-            "hostid": "dockerhostid-anchore-engine",
-            "service_detail": {
-                "available": true,
-                "busy": false,
-                "db_version": "0.0.9",
-                "detail": {},
-                "message": "all good",
-                "up": true,
-                "version": "0.3.4"
-            },
-            "servicename": "analyzer",
-            "status": true,
-            "status_message": "available",
-            "version": "v1"
-        },
-        {
-            "base_url": "http://anchore-engine:8082",
-            "hostid": "dockerhostid-anchore-engine",
-            "service_detail": {
-                "available": true,
-                "busy": false,
-                "db_version": "0.0.9",
-                "detail": {},
-                "message": "all good",
-                "up": true,
-                "version": "0.3.4"
-            },
-            "servicename": "catalog",
-            "status": true,
-            "status_message": "available",
-            "version": "v1"
-        },
-        {
-            "base_url": "http://anchore-engine:8228",
-            "hostid": "dockerhostid-anchore-engine",
-            "service_detail": {
-                "available": true,
-                "busy": false,
-                "db_version": "0.0.9",
-                "detail": {},
-                "message": "all good",
-                "up": true,
-                "version": "0.3.4"
-            },
-            "servicename": "apiext",
-            "status": true,
-            "status_message": "available",
-            "version": "v1"
-        },
-        {
-            "base_url": "http://anchore-engine:8083",
-            "hostid": "dockerhostid-anchore-engine",
-            "service_detail": {
-                "available": true,
-                "busy": false,
-                "db_version": "0.0.9",
-                "detail": {},
-                "message": "all good",
-                "up": true,
-                "version": "0.3.4"
-            },
-            "servicename": "simplequeue",
-            "status": true,
-            "status_message": "available",
-            "version": "v1"
-        }
+        ...
     ]
 }
 
@@ -340,3 +256,6 @@ Service availability: Success.
 Feed sync: Checking sync completion for feed set (vulnerabilities)...
 Feed sync: Success.
 ```
+
+### Image analysis
+
