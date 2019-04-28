@@ -264,7 +264,7 @@ Feed sync: Success.
 
 ### Logs
 
-Anchore logs can be accessed by executing into the corresponding container and navigating to `/var/log/anchore`. From this location you can access logs for specific services (if co-located each of the service logs will be available for access under this directory).
+Anchore logs can be accessed by executing into the Anchore container and navigating to `/var/log/anchore`. From this location you can access logs for specific services (if co-located each of the service logs will be available for access under this directory).
 
 ```
 # Example logs
