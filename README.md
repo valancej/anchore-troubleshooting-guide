@@ -323,3 +323,20 @@ vulnerabilities        ubuntu:19.04           2019-04-28T13:04:08.653333        
 ```
 
 **Note:** In order to return vulnerability results on analyzed images feed data must be synced.
+
+#### System wait
+
+You can run the following command to wait until Anchore Engine is available and ready. This can be useful when waiting for vulnerability data to sync on intial installation. `anchore-cli system wait`
+
+```
+# Blocking operation that will return when anchore-engine is available and ready
+
+root@4c0a95557659:/anchore-engine# anchore-cli system wait
+Starting checks to wait for anchore-engine to be available timeout=-1.0 interval=5.0
+API availability: Checking anchore-engine URL (http://localhost:8228)...
+API availability: Success.
+Service availability: Checking for service set (catalog,apiext,policy_engine,simplequeue,analyzer)...
+Service availability: Success.
+Feed sync: Checking sync completion for feed set (vulnerabilities)...
+Feed sync: Success.
+```
