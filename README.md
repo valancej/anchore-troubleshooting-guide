@@ -13,6 +13,8 @@ Table of contents
       * [Events](#events)
       * [Logs](#logs)
       * [Feeds](#feeds)
+      * [Image Analysis](#image-analysis)
+      * [Registries](#registries)
 <!--te-->
 
 ## Anchore CLI
@@ -292,7 +294,7 @@ If you run into issues with images failing analysis a good place to start inspec
 
 The analyzer is the only component that can set an image state to 'analysis_failed', so you should be able to see a record of what happened. 
 
-### Registry
+### Registries
 
 Anchore Engine will attempt to download images from any registry without requiring further configuration.
 However if your registry requires authentication then the registry and corresponding credentials will need to be defined.
