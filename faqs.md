@@ -8,6 +8,7 @@ For each of the following frequently asked questions, read the [General Troubles
    * [No vulnerability results for an analyzed image](#no-vulnerability-results-for-an-analyzed-image)
    * [My image won't analyze](#my-image-wont-analyze)
    * [Unable to access private registry](#unable-to-access-private-registry)
+   * [Anchore Engine container keeps exiting](#anchore-engine-container-keeps-exiting)
 <!--te-->
 
 **Note:** As stated in the [General Troubleshooting Approach Guide](general.md), passing the `--debug` option to any Anchore CLI command can often help narrow down particular issues. 
@@ -149,3 +150,32 @@ Anchore Engine will only pull images from a TLS/SSL enabled registry. If the reg
 Anchore Engine attempts to perform a credential validation upon registry addition, but there are cases where a credential can be valid but the validation routine can fail (in particular, credential validation methods are changing for public registries over time).  If you are unable to add a registry but believe that the credential you are providing is valid, or you wish to add a credential to anchore before it is in place in the registry, you can bypass the registry credential validation process using the `--skip-validate` option to the 'registry add' command.
 
 `anchore-cli registry add REGISTRY USERNAME PASSWORD --skip-validate`
+
+## Anchore Engine container keeps exiting
+
+The first step here should be to inspected the logs for the exited container. For Docker, running `docker logs <exited container id> ` should return the reason the container exited. 
+
+If you see `[MainThread] [anchore_manager.cli.service/start()] [ERROR] Error: cannot locate configuration file (/config/config.yaml)` in the logs, you should verify you have set up the directory for your Anchore installation correctly. 
+
+If you are following the Anchore engine quickstart guide, your directory structure should look like the following:
+
+```
+cd ~/aevolume
+# find .
+.
+./config
+./config/config.yaml
+./db
+./docker-compose.yaml
+```
+
+If you still see the above error, take a look at the `docker-compose.yaml` file and confirm that the config volume mount definition is correct. 
+
+Example: 
+
+```
+volumes:
+   - ./config:/config/:z
+```
+
+**Note:** If you are following the quickstart guide, you should not need to make any modifications to the configuration files, they are designed to work out of the box.
