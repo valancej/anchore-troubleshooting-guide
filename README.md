@@ -255,3 +255,71 @@ type: feed_sync_start
 ```
 
 **Note:** Depending on the output from the detailed events, looking into the logs for a particular servicename (example: policy_engine) is the next troubleshooting step.  
+
+### Feeds
+
+When the Anchore Engine runs it will begin to synchronize security feed data from the Anchore feed service.
+
+**Note:** Upon a fresh installation of Anchore Engine, the system will take some time to bootstrap. CVE data for Linux distributions such as Alpine, CentOS, Debian, Oracle, Red Hat and Ubuntu will be downloaded. The initial sync may take anywhere from  10 to 60 minutes depending on the speed of your network connection. 
+
+#### Viewing feeds
+
+The following command will report a list of feeds synced by Anchore: `anchore-cli system feeds list`
+
+```
+anchore-cli system feeds list
+Feed                   Group                  LastSync                          RecordCount        
+nvd                    nvddb:2002             2019-02-25T21:35:12.802608        6745               
+nvd                    nvddb:2003             2019-02-25T21:35:13.188204        1547               
+nvd                    nvddb:2004             2019-02-25T21:35:13.774093        2702               
+nvd                    nvddb:2005             2019-02-25T21:35:14.281344        4749               
+nvd                    nvddb:2006             2019-02-25T21:39:01.936476        7127               
+nvd                    nvddb:2007             2019-02-25T21:39:02.432799        6556               
+nvd                    nvddb:2008             2019-02-25T22:29:19.704624        7147               
+nvd                    nvddb:2009             2019-02-25T22:29:20.292788        4964               
+nvd                    nvddb:2010             2019-02-25T22:29:20.720235        5073               
+nvd                    nvddb:2011             2019-02-25T21:30:43.003078        4621               
+nvd                    nvddb:2012             2019-02-25T21:35:11.663650        5549               
+nvd                    nvddb:2013             2019-02-25T21:39:01.289722        6160               
+nvd                    nvddb:2014             2019-02-25T21:42:11.148478        8493               
+nvd                    nvddb:2015             2019-02-25T21:44:55.773423        8023               
+nvd                    nvddb:2016             2019-02-25T21:48:13.150698        9872               
+nvd                    nvddb:2017             2019-02-25T22:03:35.550272        15162              
+nvd                    nvddb:2018             2019-02-25T22:26:12.131914        13541              
+nvd                    nvddb:2019             2019-02-25T22:29:19.116614        963                
+vulnerabilities        alpine:3.3             2019-04-28T13:04:11.054665        457                
+vulnerabilities        alpine:3.4             2019-04-28T13:04:11.283342        681                
+vulnerabilities        alpine:3.5             2019-04-28T13:04:10.741848        875                
+vulnerabilities        alpine:3.6             2019-04-28T13:04:13.506188        1051               
+vulnerabilities        alpine:3.7             2019-04-28T13:04:10.510544        1125               
+vulnerabilities        alpine:3.8             2019-04-28T13:04:08.909376        1220               
+vulnerabilities        alpine:3.9             2019-04-28T13:04:08.308430        1218               
+vulnerabilities        amzn:2                 2019-04-28T13:04:14.120807        163                
+vulnerabilities        centos:5               2019-04-28T13:04:10.278929        1323               
+vulnerabilities        centos:6               2019-04-28T13:04:12.089106        1328               
+vulnerabilities        centos:7               2019-04-28T13:04:13.261358        778                
+vulnerabilities        debian:10              2019-04-28T13:04:12.408950        20095              
+vulnerabilities        debian:7               2019-04-28T13:04:12.643238        20455              
+vulnerabilities        debian:8               2019-04-28T13:04:15.673385        21557              
+vulnerabilities        debian:9               2019-04-28T13:04:07.625729        20319              
+vulnerabilities        debian:unstable        2019-04-28T13:04:13.900741        20952              
+vulnerabilities        ol:5                   2019-04-28T13:04:14.578852        1230               
+vulnerabilities        ol:6                   2019-04-28T13:04:11.595896        1401               
+vulnerabilities        ol:7                   2019-04-28T13:04:11.857659        889                
+vulnerabilities        ubuntu:12.04           2019-04-28T13:04:09.166082        14948              
+vulnerabilities        ubuntu:12.10           2019-04-28T13:04:07.207705        5652               
+vulnerabilities        ubuntu:13.04           2019-04-28T13:04:09.730803        4127               
+vulnerabilities        ubuntu:14.04           2019-04-28T13:04:10.044314        18504              
+vulnerabilities        ubuntu:14.10           2019-04-28T13:04:14.350013        4456               
+vulnerabilities        ubuntu:15.04           2019-04-28T13:04:07.980058        5789               
+vulnerabilities        ubuntu:15.10           2019-04-28T13:04:16.144666        6513               
+vulnerabilities        ubuntu:16.04           2019-04-28T13:04:12.989542        15484              
+vulnerabilities        ubuntu:16.10           2019-04-28T13:04:14.885677        8647               
+vulnerabilities        ubuntu:17.04           2019-04-28T13:04:15.133018        9157               
+vulnerabilities        ubuntu:17.10           2019-04-28T13:04:15.914109        7935               
+vulnerabilities        ubuntu:18.04           2019-04-28T13:04:09.501847        9736               
+vulnerabilities        ubuntu:18.10           2019-04-28T13:04:15.418772        7823               
+vulnerabilities        ubuntu:19.04           2019-04-28T13:04:08.653333        6274 
+```
+
+**Note:** In order to return vulnerability results on analyzed images feed data must be synced.
