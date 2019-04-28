@@ -53,6 +53,8 @@ Throughout this guide, I will be executing Anchore CLI commands to assist with t
 
 When troubleshooting Anchore Engine, the recommend approach is to first verify all Anchore services are up, use the event subsystem to narrow down particular issues, and then navigate to the logs for specific services to find out more information.
 
+If you are running into particular issues with certain Anchore operations (example: image analysis) common troubleshooting methods are documented in sections below. 
+
 #### Verifying Services
 
 Verify that the following Anchore Engine services are up
