@@ -6,6 +6,7 @@ For each of the following frequently asked questions, read the [General Troubles
 <!--ts-->
    * [Unauthorized error when using the Anchore CLI](#unauthorized-error-when-using-the-anchore-cli)
    * [No vulnerability results for an analyzed image](#no-vulnerability-results-for-an-analyzed-image)
+   * [My image won't analyze](#my-image-wont-analyze)
 <!--te-->
 
 ## Unauthorized error when using the Anchore CLI
@@ -117,13 +118,13 @@ Feed sync: Success.
 
 If you are running into feed sync failures a good place to begin investigation is the the policy engine service logs (`/var/log/anchore/anchore-policy-engine.log`)
 
-### Image analysis
+## My image won't analyze
 
 Image analysis is performed as a distinct, asynchronous, and scheduled task driven by queues that analyzer workers periodically poll. Image records have a small state-machine as follows:
 
 **Note:** In order for an image to move from 'not_analyzed' to 'analyzing', you need a healthy catalog, simplequeue, and analyzer service up and running. See the [Verifying Services](#verifying-services) section for more information.
 
-#### Image analysis failures
+### Logs
 
 If you run into issues with images failing analysis a good place to start inspecting is the analyzer logs (`/var/log/anchore/anchore-worker.log`)
 
