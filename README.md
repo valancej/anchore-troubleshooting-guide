@@ -49,6 +49,8 @@ Throughout this guide, I will be executing Anchore CLI commands to assist with t
 
 ### General Troubleshooting Approach
 
+When troubleshooting Anchore Engine, the recommend approach is to first verify all Anchore services are up, use the event subsystem to narrow down particular issues, and then navigate to the logs for specific services to find out more information.
+
 #### Verifying Services
 
 Verify that the following Anchore Engine services are up
@@ -274,8 +276,12 @@ Feed sync: Checking sync completion for feed set (vulnerabilities)...
 Feed sync: Success.
 ```
 
+### Image analysis
+
+Image analysis is performed as a distinct, asynchronous, and scheduled task driven by queues that analyzer workers periodically poll. Image records have a small state-machine as follows:
+
+#### Image analysis failures
 
 
-### Image analysis 
 
 ### Registry 
