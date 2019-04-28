@@ -284,6 +284,6 @@ Image analysis is performed as a distinct, asynchronous, and scheduled task driv
 
 If you run into issues with images failing analysis a good place to start inspecting is the analyzer logs (`/var/log/anchore/anchore-worker.log`)
 
-The analyzer is the only component that can set an image state to 'analysis_failed`, so you should be able to see a record of what happened. 
+The analyzer is the only component that can set an image state to 'analysis_failed', so you should be able to see a record of what happened. 
 
 ### Registry 
