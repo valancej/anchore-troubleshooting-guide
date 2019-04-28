@@ -7,6 +7,7 @@ For each of the following frequently asked questions, read the [General Troubles
    * [Unauthorized error when using the Anchore CLI](#unauthorized-error-when-using-the-anchore-cli)
    * [No vulnerability results for an analyzed image](#no-vulnerability-results-for-an-analyzed-image)
    * [My image won't analyze](#my-image-wont-analyze)
+   * [Unable to access private registry](#unable-to-access-private-registry)
 <!--te-->
 
 ## Unauthorized error when using the Anchore CLI
@@ -130,18 +131,18 @@ If you run into issues with images failing analysis a good place to start inspec
 
 The analyzer is the only component that can set an image state to 'analysis_failed', so you should be able to see a record of what happened. 
 
-### Registries
+## Unable to access private registry
 
 Anchore Engine will attempt to download images from any registry without requiring further configuration.
 However if your registry requires authentication then the registry and corresponding credentials will need to be defined.
 
-#### The --insecure option
+### The --insecure option
 
 Anchore Engine will only pull images from a TLS/SSL enabled registry. If the registry is protected with a self signed certificate or a certificated signed by an unknown certificate authority then the `--insecure` option can be passed which instructs the Anchore Engine not to validate the certificate.
 
 `anchore-cli registry add REGISTRY USERNAME PASSWORD --insecure`
 
-#### The --skip-validate option
+### The --skip-validate option
 
 Anchore Engine attempts to perform a credential validation upon registry addition, but there are cases where a credential can be valid but the validation routine can fail (in particular, credential validation methods are changing for public registries over time).  If you are unable to add a registry but believe that the credential you are providing is valid, or you wish to add a credential to anchore before it is in place in the registry, you can bypass the registry credential validation process using the `--skip-validate` option to the 'registry add' command.
 
