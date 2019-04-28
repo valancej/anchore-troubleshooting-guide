@@ -1,4 +1,4 @@
-# General Troubleshooting approach with Anchore
+# General Troubleshooting with Anchore
 
 This guide will walkthrough some general troubleshooting tips with your Anchore Engine instance. When troubleshooting Anchore Engine, the recommend approach is to first verify all Anchore services are up, use the event subsystem to narrow down particular issues, and then navigate to the logs for specific services to find out more information.
 
